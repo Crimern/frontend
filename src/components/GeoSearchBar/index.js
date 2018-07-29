@@ -1,5 +1,20 @@
-import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
+import { MapControl, withLeaflet } from 'react-leaflet';
+class GeoSearchBar extends MapControl {
 
-const provider = new OpenStreetMapProvider();
+  createLeafletElement() {
+    return GeoSearchControl({
+      provider: new OpenStreetMapProvider(),
+      style: 'bar',
+      showMarker: true,
+      showPopup: false,
+      autoClose: false,
+      retainZoomLevel: false,
+      animateZoom: true,
+      keepResult: false,
+      searchLabel: 'search'
+    });
+  }
+}
 
-console.log(provider);
+export default withLeaflet(GeoSearchBar);
