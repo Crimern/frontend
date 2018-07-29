@@ -2,8 +2,10 @@ import React, {Component} from "react";
 import Routes from "../../Routes";
 import {connect} from "react-redux";
 import {withRouter} from "react-router";
+import OSMap from './../OSMap/index'
 
 class App extends Component {
+
   componentDidMount() {}
 
   render() {
@@ -11,7 +13,12 @@ class App extends Component {
       isLoggedIn: false
     };
 
-    return <Routes props={childProps} />;
+    return (
+    <div>
+      <Routes props={childProps} />
+      <OSMap coordinateX={53.0184484} coordinateY={18.5722981} />
+    </div>
+    )
   }
 }
 
