@@ -7,13 +7,13 @@ You will need the [latest version of Node.js](https://nodejs.org/en/download/) i
 1. Clone or [download](https://github.com/Bartozzz/DeveloperPortal/archive/master.zip) this repository:
 
   ```bash
-  $ git clone https://github.com/Bartozzz/DeveloperPortal.git
+  $ git clone https://github.com/Crimern/frontend.git
   ```
 
 2. Move to the downloaded directory in your terminal:
 
   ```bash
-  $ cd DeveloperPortal
+  $ cd frontend
   ```
 
 3. Download NPM dependencies:
