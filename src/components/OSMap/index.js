@@ -10,12 +10,11 @@ class OSMap extends Component {
       zoom: 12
     }
   }
-
   render() {
     const position = [this.props.coordinateX, this.props.coordinateY];
     return (
-      <Map style={{height: '90vh'}} center={position} zoom={this.state.zoom}>
-                <SearchBar/>
+      <Map style={{height: '100vh'}} center={position} zoom={this.state.zoom}>
+        <SearchBar/>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
