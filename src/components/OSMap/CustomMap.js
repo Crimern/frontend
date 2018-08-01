@@ -8,12 +8,10 @@ class OSMap extends Component {
       zoom: 50
     }
   }
+
   render() {
+    const moveFnc = (a,b,c) => console.log({a,b,c})
     const position = [this.props.coordinateX, this.props.coordinateY];
-    const moveFnc = (e) => {
-      const { lat, lng } = e.target.getCenter();
-      console.log({lat,lng})
-    }
     return (
       <Map style={{height: '90vh'}} center={position} onMoveend={moveFnc} zoom={this.state.zoom}>
         <SearchBar/>

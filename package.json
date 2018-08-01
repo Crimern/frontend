@@ -13,6 +13,7 @@
     "classnames": "2.2.5",
     "history": "^4.7.2",
     "leaflet-geosearch": "^2.7.0",
+    "leaflet.coordinates": "^0.1.5",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
