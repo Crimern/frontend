@@ -1,5 +1,9 @@
 import React, {Component}  from 'react';
 import { Map, TileLayer, Marker, Popup, Circle, CircleMarker } from 'react-leaflet';
+import {connect} from "react-redux";
+import {withRouter} from "react-router";
+import {crimeFetchRequest} from "../../redux/actions/crimeActions"
+
 import SearchBar from './../GeoSearchBar'
 class OSMap extends Component {
   constructor() {
@@ -8,11 +12,13 @@ class OSMap extends Component {
       zoom: 50
     }
   }
+
   render() {
     const position = [this.props.coordinateX, this.props.coordinateY];
     const moveFnc = (e) => {
+      console.log(e.target.getZoom())
       const { lat, lng } = e.target.getCenter();
-      console.log({lat,lng})
+      this.props.crimeFetch(lat,lng)
     }
     return (
       <Map style={{height: '90vh'}} center={position} onMoveend={moveFnc} zoom={this.state.zoom}>
@@ -27,11 +33,29 @@ class OSMap extends Component {
             A pretty CSS3 popup. <br/> Easily customizable.
           </Popup>
         </Marker>
+        {
+          this.props.crimes.map(object => {
+            return <Circle center={[object.x,object.y]} color="red" radius={20} key={object._id} />
+          })
+        }
       </Map>
      
     );
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    crimeFetch: (x,y) => {
+      dispatch(crimeFetchRequest(x,y));
+    }
+  };
+};
 
-export default OSMap;
+const mapStateToProps = state => {
+  return {
+    crimes: state.crimeStore.crimes
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OSMap)
