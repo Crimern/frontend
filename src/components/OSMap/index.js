@@ -17,8 +17,10 @@ class OSMap extends Component {
     const position = [this.props.coordinateX, this.props.coordinateY];
     const moveFnc = (e) => {
       console.log(e.target.getZoom())
+      
       const { lat, lng } = e.target.getCenter();
-      this.props.crimeFetch(lat,lng)
+      console.log(lat,lng)
+      this.props.crimeFetch(lng,lat)
     }
     return (
       <Map style={{height: '90vh'}} center={position} onMoveend={moveFnc} zoom={this.state.zoom}>
@@ -35,7 +37,7 @@ class OSMap extends Component {
         </Marker>
         {
           this.props.crimes.map(object => {
-            return <Circle center={[object.x,object.y]} color="red" radius={20} key={object._id} />
+            return <Circle center={[object.location.coordinates[1],object.location.coordinates[0]]} color="red" radius={20} key={object._id} />
           })
         }
       </Map>
@@ -46,8 +48,8 @@ class OSMap extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    crimeFetch: (x,y) => {
-      dispatch(crimeFetchRequest(x,y));
+    crimeFetch: (lng,lat) => {
+      dispatch(crimeFetchRequest(lng,lat));
     }
   };
 };

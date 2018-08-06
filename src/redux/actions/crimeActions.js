@@ -1,6 +1,6 @@
-export const crimeFetchRequest = (x,y) => ({
+export const crimeFetchRequest = (lng,lat) => ({
   type: "CRIME_FETCH_REQUEST",
-  payload: {x,y}
+  payload: {lng,lat}
 })
 
 export const crimeFetchSuccess = data => ({
