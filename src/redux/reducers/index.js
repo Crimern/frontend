@@ -1,3 +1,5 @@
 import {combineReducers} from "redux";
-
-export default combineReducers({});
+import crimeReducer from './crimeReducer'
+export default combineReducers({
+  crimeStore: crimeReducer
+});
