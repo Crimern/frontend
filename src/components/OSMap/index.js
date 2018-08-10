@@ -16,10 +16,7 @@ class OSMap extends Component {
   render() {
     const position = [this.props.coordinateX, this.props.coordinateY];
     const moveFnc = (e) => {
-      console.log(e.target.getZoom())
-      
       const { lat, lng } = e.target.getCenter();
-      console.log(lat,lng)
       this.props.crimeFetch(lng,lat)
     }
     return (
