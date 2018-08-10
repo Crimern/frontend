@@ -22,6 +22,6 @@ function* fetchCrimesRadius(action) {
   }
 }
 
-export default function* checkAuthSaga() {
+export default function* fetchCrimesRadiusSaga() {
   yield takeLatest("CRIME_FETCH_REQUEST", fetchCrimesRadius);
 }
