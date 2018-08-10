@@ -3,7 +3,7 @@ import Routes from "../../Routes";
 import {connect} from "react-redux";
 import {withRouter} from "react-router";
 import OSMap from './../OSMap/index'
-
+import FilterList from './../FilterList'
 class App extends Component {
 
   componentDidMount() {}
@@ -17,6 +17,7 @@ class App extends Component {
     <div>
       <Routes props={childProps} />
       <OSMap coordinateX={53.0184484} coordinateY={18.5722981} />
+      <FilterList/>
     </div>
     )
   }
