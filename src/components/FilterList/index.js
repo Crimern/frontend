@@ -33,7 +33,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    crimeTypes: state.crimeTypeStore.crimeTypes
+    crimeTypes: state.crimeTypeStore.crimeTypes,
+    coordinates: state.mapStore.coordinates
   };
 };
 

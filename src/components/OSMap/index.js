@@ -1,8 +1,11 @@
+import './index.css';
+
 import React, {Component}  from 'react';
 import { Map, TileLayer, Marker, Popup, Circle, CircleMarker } from 'react-leaflet';
 import {connect} from "react-redux";
 import {withRouter} from "react-router";
 import {crimeFetchRequest} from "../../redux/actions/crimeActions"
+import {changeCoords} from "../../redux/actions/mapActions";
 
 import SearchBar from './../GeoSearchBar'
 class OSMap extends Component {
@@ -17,10 +20,12 @@ class OSMap extends Component {
     const position = [this.props.coordinateX, this.props.coordinateY];
     const moveFnc = (e) => {
       const { lat, lng } = e.target.getCenter();
-      this.props.crimeFetch(lng,lat)
+      const types = Array.from(this.props.types.keys())
+      this.props.changeCoords({lng,lat})
+      this.props.crimeFetch(lng,lat,types)
     }
     return (
-      <Map style={{height: '90vh'}} center={position} onMoveend={moveFnc} zoom={this.state.zoom}>
+      <Map className="map" center={position} onMoveend={moveFnc} zoom={this.state.zoom}>
         <SearchBar/>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -45,15 +50,19 @@ class OSMap extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    crimeFetch: (lng,lat) => {
-      dispatch(crimeFetchRequest(lng,lat));
+    crimeFetch: (lng,lat,types) => {
+      dispatch(crimeFetchRequest(lng,lat,types));
+    },
+    changeCoords: ({lng,lat}) => {
+      dispatch(changeCoords({lng,lat}))
     }
   };
 };
 
 const mapStateToProps = state => {
   return {
-    crimes: state.crimeStore.crimes
+    crimes: state.crimeStore.crimes,
+    types: state.filterStore.filters
   };
 };
 
