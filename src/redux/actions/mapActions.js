@@ -1,6 +1,9 @@
-export const changeCoords = coordinates => ({
+export const changeCoords = (lat, lng) => ({
   type: "MAP_COORDS_CHANGE",
-  coordinates
+  payload: {
+    lat,
+    lng
+  }
 })
 
 
