@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import {crimeTypeFetchRequest} from '../../redux/actions/crimeTypeActions'
+import { crimeTypesActions } from "../../state/ducks/crimeTypes";
 import Filter from "./filter";
 
 class FilterList extends Component {
@@ -14,8 +14,8 @@ class FilterList extends Component {
     return (
       <div>
         <fieldset>
-        <legend>Choose your legend</legend>
-        {crimeTypes.map(item => <Filter key={item._id} name={item.name} id={item._id} />)}
+          <legend>Choose your legend</legend>
+          {crimeTypes.map(item => <Filter key={item._id} name={item.name} id={item._id} />)}
         </fieldset>
 
       </div>
@@ -27,13 +27,13 @@ class FilterList extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    crimeTypesFetch: () => dispatch(crimeTypeFetchRequest())
+    crimeTypesFetch: () => dispatch((crimeTypesActions.fetchRequest()))
   };
 };
 
 const mapStateToProps = state => {
   return {
-    crimeTypes: state.crimeTypeStore.crimeTypes,
+    crimeTypes: state.crimeTypesStore.crimeTypes,
     coordinates: state.mapStore.coordinates
   };
 };
