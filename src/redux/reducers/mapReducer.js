@@ -9,7 +9,7 @@ const initialState = {
 
 const actionHandlers = {
   MAP_COORDS_CHANGE: (state, action) => {
-   const {lat,lng} = action.coordinates;
+   const {lat,lng} = action.payload;
    return R.evolve(R.__, state)({
       coordinates: R.always({lat,lng}),
     })

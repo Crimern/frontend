@@ -2,12 +2,13 @@ import * as R from "ramda";
 import createReducer from "../../helpers/reducerHelper";
 
 const initialState = {
-  crimes: []
+  crimes: [],
+  error: ""
 };
 
 const actionHandlers = {
   CRIME_FETCH_SUCCESS: (state, action) => {
-   return R.evolve(R.__, state)({
+    return R.evolve(R.__, state)({
       crimes: R.always(action.data)
     })
   }
