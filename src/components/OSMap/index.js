@@ -21,9 +21,10 @@ class OSMap extends Component {
     const moveFnc = (e) => {
       const { lat, lng } = e.target.getCenter();
       const types = Array.from(this.props.types.keys())
-      this.props.changeCoords({lng,lat})
+      this.props.changeCoords(lat,lng)
       this.props.crimeFetch(lng,lat,types)
     }
+    
     return (
       <Map className="map" center={position} onMoveend={moveFnc} zoom={this.state.zoom}>
         <SearchBar/>
@@ -37,6 +38,7 @@ class OSMap extends Component {
             A pretty CSS3 popup. <br/> Easily customizable.
           </Popup>
         </Marker>
+        
         {
           this.props.crimes.map(object => {
             return <Circle center={[object.location.coordinates[1],object.location.coordinates[0]]} color="red" radius={20} key={object._id} />
@@ -53,8 +55,8 @@ const mapDispatchToProps = dispatch => {
     crimeFetch: (lng,lat,types) => {
       dispatch(crimeFetchRequest(lng,lat,types));
     },
-    changeCoords: ({lng,lat}) => {
-      dispatch(changeCoords({lng,lat}))
+    changeCoords: (lat,lng) => {
+      dispatch(changeCoords(lat,lng))
     }
   };
 };

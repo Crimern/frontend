@@ -6,15 +6,15 @@ class Filter extends Component {
 
   handleChange = (e) => {
     const {id,name} = e.target;
-    const {coordinates} = this.props; 
+    const {lat,lng} = this.props.coordinates; 
     if(e.target.checked) {
-      this.props.filterAdd({id,name})
+      this.props.filterAdd(name,id)
     } else {
       this.props.filterRemove(id);
     }
 
     const types = Array.from(this.props.filters.keys())
-    this.props.crimeFetch(coordinates.lng,coordinates.lat,types)
+    this.props.crimeFetch(lng,lat,types)
   }
   render() {
     const {name,id} = this.props;
@@ -30,7 +30,7 @@ class Filter extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    filterAdd: (filter) => dispatch(filterAdd(filter)),
+    filterAdd: (name,id) => dispatch(filterAdd(name,id)),
     filterRemove: (id) => dispatch(filterRemove(id)),
     crimeFetch: (lng,lat,types) => {
       dispatch(crimeFetchRequest(lng,lat,types));
