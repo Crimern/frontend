@@ -1,5 +1,5 @@
 import * as R from "ramda";
-import createReducer from "../../helpers/reducerHelper";
+import createReducer from "../../../helpers/reducerHelper";
 
 const initialState = {
   crimes: [],

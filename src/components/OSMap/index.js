@@ -4,8 +4,9 @@ import React, {Component}  from 'react';
 import { Map, TileLayer, Marker, Popup, Circle, CircleMarker } from 'react-leaflet';
 import {connect} from "react-redux";
 import {withRouter} from "react-router";
-import {crimeFetchRequest} from "../../redux/actions/crimeActions"
-import {changeCoords} from "../../redux/actions/mapActions";
+import {crimesActions} from "../../state/ducks/crimes";
+import {mapActions} from "../../state/ducks/map";
+
 
 import SearchBar from './../GeoSearchBar'
 class OSMap extends Component {
@@ -53,18 +54,18 @@ class OSMap extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     crimeFetch: (lng,lat,types) => {
-      dispatch(crimeFetchRequest(lng,lat,types));
+      dispatch(crimesActions.fetchRequest(lng,lat,types));
     },
     changeCoords: (lat,lng) => {
-      dispatch(changeCoords(lat,lng))
+      dispatch(mapActions.changeCoords(lat,lng))
     }
   };
 };
 
 const mapStateToProps = state => {
   return {
-    crimes: state.crimeStore.crimes,
-    types: state.filterStore.filters
+    crimes: state.crimesStore.crimes,
+    types: state.filtersStore.filters
   };
 };
 

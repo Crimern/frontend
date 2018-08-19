@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
-import { filterAdd, filterRemove } from "../../redux/actions/filterActions";
-import {crimeFetchRequest} from "../../redux/actions/crimeActions";
+import {crimesActions} from "../../state/ducks/crimes";
+import {filtersActions} from "../../state/ducks/filters";
+
 class Filter extends Component {
 
   handleChange = (e) => {
@@ -30,10 +31,10 @@ class Filter extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    filterAdd: (name,id) => dispatch(filterAdd(name,id)),
-    filterRemove: (id) => dispatch(filterRemove(id)),
+    filterAdd: (name,id) => dispatch(filtersActions.filterAdd(name,id)),
+    filterRemove: (id) => dispatch(filtersActions.filterRemove(id)),
     crimeFetch: (lng,lat,types) => {
-      dispatch(crimeFetchRequest(lng,lat,types));
+      dispatch(crimesActions.fetchRequest(lng,lat,types));
     },
   };
 };
@@ -41,7 +42,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     coordinates: state.mapStore.coordinates,
-    filters: state.filterStore.filters
+    filters: state.filtersStore.filters
   };
 };
 
