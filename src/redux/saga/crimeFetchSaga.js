@@ -1,27 +1,12 @@
 import {call, put, takeLatest} from "redux-saga/effects";
+import {createSagaApiCall} from "../../helpers/reduxHelper";
 
 import {crimeFetchSuccess, crimeFetchFail} from "../actions/crimeActions";
 import {CRIME_FETCH_RADIUS} from "../endpoints";
 
 
-function* fetchCrimesRadius(action) {
-  try {
-    const data = yield call(fetch, CRIME_FETCH_RADIUS, {
-      method: "POST",
-      body: JSON.stringify(action.payload)
-    });
-    
-    const json = yield data.json();
-    if (json.success) {
-      yield put(crimeFetchSuccess(json.data));
-    } else {
-      yield put(crimeFetchFail(json.error));
-    }
-  } catch (error) {
-    yield put(crimeFetchFail(error.message));
-  }
-}
+const apiCall = createSagaApiCall(CRIME_FETCH_RADIUS,"POST",crimeFetchSuccess,crimeFetchFail)
 
 export default function* fetchCrimesRadiusSaga() {
-  yield takeLatest("CRIME_FETCH_REQUEST", fetchCrimesRadius);
+  yield takeLatest("CRIME_FETCH_REQUEST", apiCall);
 }
