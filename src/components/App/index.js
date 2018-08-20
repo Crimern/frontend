@@ -1,12 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+
 import Routes from "../../Routes";
-import {connect} from "react-redux";
-import {withRouter} from "react-router";
-import OSMap from './../OSMap/index'
-import FilterList from './../FilterList'
+
 class App extends Component {
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   render() {
     const childProps = {
@@ -14,11 +14,9 @@ class App extends Component {
     };
 
     return (
-    <div>
-      <Routes props={childProps} />
-      <OSMap coordinateX={53.0184484} coordinateY={18.5722981} />
-      <FilterList/>
-    </div>
+      <div>
+        <Routes props={childProps} />
+      </div>
     )
   }
 }

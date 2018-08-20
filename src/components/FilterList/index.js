@@ -29,7 +29,7 @@ const mapDispatchToProps = dispatch => {
   return {
     crimeTypesFetch: () => dispatch((crimeTypesActions.fetchRequest()))
   };
-};
+}; 
 
 const mapStateToProps = state => {
   return {
