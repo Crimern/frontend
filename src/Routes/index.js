@@ -1,8 +1,7 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
 import Applied from "./AppliedRoute";
-import Authenticated from "./AuthenticatedRoute";
-import Unauthenticated from "./UnauthenticatedRoute";
+
 import Loadable from "../LoadableComponent";
 
 const NotFound = Loadable({

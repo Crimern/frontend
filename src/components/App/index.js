@@ -1,37 +1,19 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {withRouter} from "react-router";
 
 import Routes from "../../Routes";
 
 class App extends Component {
-
-  componentDidMount() { }
+  componentDidMount() {}
 
   render() {
-    const childProps = {
-      isLoggedIn: false
-    };
-
     return (
       <div>
-        <Routes props={childProps} />
+        <Routes />
       </div>
-    )
+    );
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
-const mapStateToProps = state => {
-  return {};
-};
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
-);
+export default withRouter(App);
