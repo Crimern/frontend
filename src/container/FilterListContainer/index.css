@@ -1,0 +1,11 @@
+.FilterList {
+  background: #161925;
+  width: 15%;
+  padding: 15px;
+}
+
+.FilterList__fieldset {
+  border-color: white;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+}

@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 
 import {crimeTypesActions} from "../../state/ducks/crimeTypes";
 import Filter from "./filter";
+import "./index.css";
 
 class FilterList extends Component {
   componentDidMount() {
@@ -12,8 +13,8 @@ class FilterList extends Component {
   render() {
     const {crimeTypes} = this.props;
     return (
-      <div>
-        <fieldset>
+      <div className="FilterList">
+        <fieldset className="FilterList__fieldset">
           <legend>Choose your legend</legend>
           {crimeTypes.map(item => (
             <Filter key={item._id} name={item.name} id={item._id} />

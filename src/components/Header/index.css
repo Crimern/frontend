@@ -1,0 +1,27 @@
+.header {
+  background: #161925;
+  display: flex;
+  height: 10vh;
+  align-items: center;
+}
+.header__logo {
+  height: 50px;
+  margin-left: 20px;
+}
+
+.navigation {
+  margin-left: 40px;
+}
+.navigation__list {
+  display: flex;
+  list-style-type: none;
+}
+
+.navigation__element {
+  margin: 5px;
+}
+.navigation__link {
+  color: white;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+}

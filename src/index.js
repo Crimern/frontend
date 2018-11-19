@@ -1,3 +1,4 @@
+import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -7,7 +8,6 @@ import {Provider} from "react-redux";
 import App from "./components/App";
 import configureStore from "./state/store";
 import registerServiceWorker from "./workers/ServiceWorker";
-
 
 const store = configureStore();
 

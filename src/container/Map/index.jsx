@@ -45,16 +45,16 @@ class OSMap extends Component {
         />
         <Circle center={position} color="red" radius={20} />
 
-        {this.props.crimes.map(object => {
+        {this.props.crimes.map(crime => {
           return (
             <Circle
               center={[
-                object.location.coordinates[1],
-                object.location.coordinates[0]
+                crime.location.coordinates[1],
+                crime.location.coordinates[0]
               ]}
               color="red"
               radius={20}
-              key={object._id}
+              key={crime._id}
             />
           );
         })}
