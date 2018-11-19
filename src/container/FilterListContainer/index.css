@@ -7,5 +7,16 @@
 .FilterList__fieldset {
   border-color: white;
   color: white;
+  padding: 5px;
   font-family: "Open Sans", sans-serif;
+}
+
+.FilterList__inputGroup {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+.FilterList__input {
+  margin-right: 5px;
 }

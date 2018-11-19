@@ -20,13 +20,14 @@ class Filter extends Component {
     const {name, id} = this.props;
 
     return (
-      <div>
+      <div className="FilterList__inputGroup">
         <input
           type="checkbox"
           id={id}
           onChange={this.handleChange}
           name={name}
           value={name}
+          className="FilterList__input"
         />
         <label htmlFor={id}>{name}</label>
       </div>
